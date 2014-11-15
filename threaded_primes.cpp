@@ -42,7 +42,7 @@ int main(){
     }
     
     //Start Clock
-    clock_t progTime = clock();
+
     
     std::thread threadArr[NUM_THREADS];
     int intermediateSums[NUM_THREADS];
@@ -72,8 +72,7 @@ int main(){
     std::cout<<"The sum is: "<<completeSum<<std::endl;
 
     //End Clock
-    progTime = clock() - progTime;
-    std::cout<<"Time: "<<((float)progTime)/CLOCKS_PER_SEC<<" seconds"<<std::endl;
+
     
     return 0;
 }

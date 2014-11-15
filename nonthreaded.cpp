@@ -14,7 +14,7 @@ int main(){
     }
     
     //Start Clock
-    clock_t progTime = clock();
+
 
     int sum = 0;
     for(int i=0; i<ARRAY_SIZE; i++){
@@ -23,8 +23,7 @@ int main(){
     std::cout<<"The sum is: "<<sum<<std::endl;
 
     //End Clock
-    progTime = clock() - progTime;
-    std::cout<<"Time: "<<((float)progTime)/CLOCKS_PER_SEC<<" seconds"<<std::endl;
+
     
     return 0;
 }

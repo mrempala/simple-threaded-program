@@ -1,20 +1,36 @@
-//A simple program that uses threads to sum up a 1 million int array on 8 threads
-//Assumes that the resulting sum can fit in a 32-bit int (max ~2 billion)
-//Requires C++11 for std::thread
-//Note: ask Evan about passing by reference instead of ptr in func with & in main
+//100,000 sized array with numbers from 1,000,000-1,500,000
 #include <thread>
 #include <time.h>
 #include <iostream>
 #include <stdlib.h>
 
 const int NUM_THREADS = 8;
-const int ARRAY_SIZE = 1000000;
+const int ARRAY_SIZE = 100000;
+
+//Super naive, meant to be computationaly expensive
+bool isPrime(int inNum){
+    if(inNum <= 3)
+        return true;
+        
+    //inNum/2 would be slightly less naive
+    for(int i=2; i<inNum-1; i++){
+        if(inNum % i == 0){
+            return false;
+        }
+    }
+    
+    return true;
+}
 
 void summationThread(const int intArr[], int startIndex, int endIndex, int *result){
     *result = 0;
+    //std::cout<<"Hello "<<startIndex<<std::endl;
     for(int i=startIndex; i<=endIndex; i++){
-        *result += intArr[i];
+        if(isPrime(intArr[i])){
+            *result += intArr[i];
+        }
     }
+    //std::cout<<"Bye   "<<startIndex<<std::endl;
 }
 
 int main(){
@@ -22,11 +38,10 @@ int main(){
     srand(1);
     
     for(int i=0; i<ARRAY_SIZE; i++){
-        intArray[i] = rand() % 1000;
+        intArray[i] = 1000000 + 5 * i;
     }
     
     //Start Clock
-
     
     std::thread threadArr[NUM_THREADS];
     int intermediateSums[NUM_THREADS];
@@ -57,6 +72,5 @@ int main(){
 
     //End Clock
 
-    
     return 0;
 }

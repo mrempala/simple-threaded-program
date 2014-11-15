@@ -3,7 +3,7 @@
 #include <stdlib.h>
 #include <iostream>
 
-const int ARRAY_SIZE = 1000000;
+const int ARRAY_SIZE = 100000;
 
 //Super naive, meant to be computationaly expensive
 bool isPrime(int inNum){
@@ -23,12 +23,13 @@ bool isPrime(int inNum){
 int main(){
     int intArray[ARRAY_SIZE];
     srand(1);
-
+    
     for(int i=0; i<ARRAY_SIZE; i++){
-        intArray[i] = 15 * i / 1000;
+         intArray[i] = 1000000 + 5 * i;
     }
     
     //Start Clock
+
 
     int sum = 0;
     for(int i=0; i<ARRAY_SIZE; i++){
@@ -39,6 +40,7 @@ int main(){
     std::cout<<"The sum is: "<<sum<<std::endl;
 
     //End Clock
+
 
     
     return 0;
